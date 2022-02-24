@@ -328,11 +328,11 @@ class Location extends CustomPostType {
 			$users       = UserRepository::getCBManagers();
 			$userOptions = [];
 			foreach ( $users as $user ) {
-				$userOptions[ $user->ID ] = $user->get( 'user_nicename' ) . " (" . $user->last_name . " " . $user->last_name . ")";
+				$userOptions[ $user->ID ] = $user->get( 'user_nicename' ) . " (" . $user->first_name . " " . $user->last_name . ")";
 			}
 			$cmb->add_field( array(
 				'name'       => esc_html__( 'Location Admin(s)', 'commonsbooking' ),
-				'desc'       => esc_html__( 'choose one or more users to give them the permisssion to edit and manage this specific location. Only users with the role CommonsBooking Manager can be selected here.',
+				'desc'       => esc_html__( 'Choose one or more users to allow them to edit and manage this specific location. Only users with the role CommonsBooking Manager can be selected here.',
 					'commonsbooking' ),
 				'id'         => COMMONSBOOKING_METABOX_PREFIX . 'location_admins',
 				'type'       => 'pw_multiselect',
@@ -345,7 +345,7 @@ class Location extends CustomPostType {
 
 		$cmb->add_field( array(
 			'name' => esc_html__( 'Allow locked day overbooking', 'commonsbooking' ),
-			'desc' => commonsbooking_sanitizeHTML( __( 'If selected, all not selected days in any bookable timeframe that is connected to this location can be overbooked. Read the documentation <a target="_blank" href="https://commonsbooking.org/?p=435">Create Locations</a> for more information.', 'commonsbooking' ) ),
+			'desc' => commonsbooking_sanitizeHTML( __( 'If selected, all unselected days in any bookable timeframe for this location can be overbooked. Read the documentation <a target="_blank" href="https://commonsbooking.org/?p=435">Create Locations</a> for more information.', 'commonsbooking' ) ),
 			'id'   => COMMONSBOOKING_METABOX_PREFIX . 'allow_lockdays_in_range',
 			'type' => 'checkbox',
 		) );
