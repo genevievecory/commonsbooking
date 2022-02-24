@@ -115,7 +115,7 @@ class Item extends CustomPostType {
 			'show_in_nav_menus' => true,
 
 			// Hier können Berechtigungen in einem Array gesetzt werden
-			// oder die standart Werte post und page in form eines Strings gesetzt werden
+			// oder die standard Werte post und page in Form eines Strings gesetzt werden
 			'capability_type'   => array( self::$postType, self::$postType . 's' ),
 
 			'map_meta_cap'        => true,
@@ -138,7 +138,7 @@ class Item extends CustomPostType {
 			),
 
 
-			// Soll der Post Type Kategien haben?
+			// Soll der Post Type Kategorien haben?
 			'taxonomies'          => array( self::$postType . 's_category' ),
 
 			// Soll der Post Type Archiv-Seiten haben?
@@ -147,7 +147,7 @@ class Item extends CustomPostType {
 			// Soll man den Post Type exportieren können?
 			'can_export'          => false,
 
-			// Slug unseres Post Types für die redirects
+			// Slug unseres Post Types für die Redirects
 			// dieser Wert wird später in der URL stehen
 			'rewrite'             => array( 'slug' => $slug ),
 
@@ -193,11 +193,11 @@ class Item extends CustomPostType {
 			$users       = UserRepository::getCBManagers();
 			$userOptions = [];
 			foreach ( $users as $user ) {
-				$userOptions[ $user->ID ] = $user->get( 'user_nicename' ) . " (" . $user->last_name . " " . $user->last_name . ")";
+				$userOptions[ $user->ID ] = $user->get( 'user_nicename' ) . " (" . $user->first_name . " " . $user->last_name . ")";
 			}
 			$cmb->add_field( array(
 				'name'       => esc_html__( 'Item Admin(s)', 'commonsbooking' ),
-				'desc'       => esc_html__( 'choose one or more users to give them the permisssion to edit and manage this specific item. Only users with the role cb_manager can be selected here', 'commonsbooking' ),
+				'desc'       => esc_html__( 'Choose one or more users to allow them to edit and manage this specific item. Only users with the role cb_manager can be selected here', 'commonsbooking' ),
 				'id'         => COMMONSBOOKING_METABOX_PREFIX . 'item_admins',
 				'type'       => 'pw_multiselect',
 				'options'    => $userOptions,
